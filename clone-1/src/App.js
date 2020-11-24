@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import { Videos } from './Components/Videos/Videos';
+import React from 'react'
+import {Navbar} from './Components/Navbar/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <Videos />
+    <div style={{ backgroundColor:"#F9F9F9"}}>
+     <Navbar/>
     </div>
   );
 }
