@@ -9,7 +9,7 @@ export default class DataContextProvider extends React.Component {
         this.state = {
             data: [],
             isToggle: false,
-            loading : false
+            loading: false
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
@@ -78,14 +78,15 @@ export default class DataContextProvider extends React.Component {
          } = this;
 
         const {
-            data
+            data, loading, isToggle
          } = this.state;
 
         const value =
          {
             handleSearch,
             handleToggle,
-            data
+            data,
+            isToggle
         };
         return (
            <DataContext.Provider value={value}>
@@ -96,3 +97,4 @@ export default class DataContextProvider extends React.Component {
 }
 
 export {DataContext, DataContextProvider}
+
