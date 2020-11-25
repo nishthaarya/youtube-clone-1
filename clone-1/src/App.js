@@ -1,13 +1,13 @@
-
 import React from 'react'
-import logo from './logo.svg';
+import Home from './Components/Home/Home'
 import './App.css';
-
+// import Route from './Routes/Routes'
 
 function App() {
   return (
     <div className="App">
-    hi
+    
+      <Home />
     </div>
   );
 }

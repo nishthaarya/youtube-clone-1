@@ -9,7 +9,8 @@ export default class DataContextProvider extends React.Component {
         this.state = {
             data: [],
             isToggle: false,
-            loading: false
+            loading: false,
+            videoId: ""
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
@@ -24,14 +25,14 @@ export default class DataContextProvider extends React.Component {
           params: {
             part: "snippet",
             chart: "mostPopular",
-            key: "AIzaSyBn6b2JTx6poyQPcJ9KdGlkmrsPxF2xL1U",
-            maxResults: 50
-          }
+            key: "AIzaSyADQjWaijqYWRy56w4wSwaWBngO49tJa_M",
+            maxResults: 50,
+          },
         })
           .then((res) => {
             this.setState({
               data: res.data.items,
-              loading: false
+              loading: false,
             });
           })
           .catch((err) => {
@@ -67,6 +68,11 @@ export default class DataContextProvider extends React.Component {
             isToggle: !isToggle
         })
     }
+    sendVideoId(id){
+      this.setState({
+        videoId: id
+      })
+    }
     componentDidUpdate(){
         console.log(this.state.isToggle)
     }
@@ -74,11 +80,12 @@ export default class DataContextProvider extends React.Component {
     render() {
         const { 
             handleSearch,
-            handleToggle
+            handleToggle,
+            sendVideoId
          } = this;
 
         const {
-            data, loading, isToggle
+            data, loading, isToggle, videoId
          } = this.state;
 
         const value =
@@ -86,7 +93,9 @@ export default class DataContextProvider extends React.Component {
             handleSearch,
             handleToggle,
             data,
-            isToggle
+            isToggle,
+            sendVideoId,
+            videoId
         };
         return (
            <DataContext.Provider value={value}>

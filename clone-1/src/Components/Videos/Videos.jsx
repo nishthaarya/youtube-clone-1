@@ -5,14 +5,14 @@ import styles from './Videos.module.css'
 
 class Videos extends React.Component {
   render() {
-    const { data, loading } = this.context;
+    const { data, loading, sendVideoId } = this.context;
     // console.log(videos);
     return loading ? <h4>Loading...</h4> :(
       <>
         <div className={styles.main_content}>
           {data.map((item) => {
             return (
-              <VideoItem key={item.id} {...item} />
+              <VideoItem key={item.id} {...item} onclick={()=>sendVideoId(item.id.videoId)}/>
             );
           })}
         </div>
