@@ -1,48 +1,44 @@
 import React from "react";
 import { DataContext } from "../../Context/DataContextProvider";
 import { VideoItem } from "./VideoItem";
-import styles from './Videos.module.css'
+import styles from "./Videos.module.css";
 
 class Videos extends React.Component {
   constructor(props) {
-    super(props)
-    this.selectVideo = this.selectVideo.bind(this);
+    super(props);
+    console.log(this.props);
   }
-  selectVideo(id){
-    const { sendVideoId } = this.context;
-    const { history } = this.props;
-    history.push(`/videos/${id}`);
-    sendVideoId(id)
-  }
-  
+
   render() {
     const { data, loading, sendVideoId, isSearching } = this.context;
-    console.log(data);
-    return loading ? <h4>Loading...</h4> :(
+    console.log(this.props);
+    return loading ? (
+      <h4>Loading...</h4>
+    ) : (
       <>
         <div className={styles.main_content}>
           {data.map((item) => {
-            console.log(item.id, item.id.videoId)
+            // console.log(item.id, item.id.videoId)
             return !isSearching ? (
               <VideoItem
+                {...this.props}
                 key={item.id}
                 {...item}
-                onclick={() => this.selectVideo(item.id.videoId)}
+                videoid={item.id}
               />
             ) : (
               <VideoItem
                 key={item.id.videoId}
-                onclick={() => this.selectVideo(item.id.videoId)}
                 {...item}
+                {...this.props}
+                videoid={item.id.videoId}
               />
             );
-          })
-        }
+          })}
         </div>
       </>
     );
   }
 }
-
 Videos.contextType = DataContext;
 export { Videos };

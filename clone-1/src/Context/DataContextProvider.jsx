@@ -28,7 +28,7 @@ export default class DataContextProvider extends React.Component {
           params: {
             part: "snippet",
             chart: "mostPopular",
-            key: "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q",
+            key: "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q",
             maxResults: 50,
           },
         })
@@ -43,7 +43,7 @@ export default class DataContextProvider extends React.Component {
           });
       }
     handleSearch(search){
-    var api_key = "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q";
+    var api_key = "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q";
         axios({
           method: "get",
           url:

@@ -39,7 +39,7 @@ class Navbar extends React.Component {
   }
 
   debouncer(){
-    var api_key = "AIzaSyDnOErpl_HkR8b2BYSWlA4u6Ghtyr4ytSs";
+    var api_key = "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q";
         axios({
           method: "get",
           url:

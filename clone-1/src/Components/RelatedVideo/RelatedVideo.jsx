@@ -12,13 +12,13 @@ class RelatedVideo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoId: this.context.videoId,
+      // videoId: this.context.videoId,
       relatedVideos: [],
     };
   }
 
   componentDidMount() {
-    var api_key = "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q";
+    var api_key = "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q";
     axios({
       method: "get",
       url: "https://youtube.googleapis.com/youtube/v3/search",
@@ -27,7 +27,7 @@ class RelatedVideo extends React.Component {
         key: api_key,
         maxResults: 20,
         type: "video",
-        relatedToVideoId: this.state.videoId,
+        relatedToVideoId: this.context.videoId,
       },
     })
       .then((response) => {
