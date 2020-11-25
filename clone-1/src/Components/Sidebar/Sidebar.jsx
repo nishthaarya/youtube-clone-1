@@ -18,6 +18,7 @@ import HelpIcon from "@material-ui/icons/Help";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import FlagIcon from "@material-ui/icons/Flag";
 import { DataContext } from "../../Context/DataContextProvider";
+import { Link } from "react-router-dom";
 
 const SideBox = styled.div`
   display: flex;
@@ -97,6 +98,12 @@ const SideItemBox = styled.div`
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.handleTrending1 = this.handleTrending1.bind(this)
+  }
+
+  handleTrending1() {
+    const {handleTrending} = this.context
+    handleTrending()
   }
 
   render() {
@@ -108,9 +115,13 @@ export default class Sidebar extends React.Component {
           <HomeIcon />
           <ItemName>Home</ItemName>
         </SideItem>
-        <SideItem>
+        <SideItem
+        onClick = 
+          {this.handleTrending1}
+        >
           <WhatshotIcon />
-          <ItemName>Trending</ItemName>
+          <ItemName 
+          >Trending</ItemName>
         </SideItem>
         <SideItem>
           <SubscriptionsIcon />
@@ -222,7 +233,8 @@ export default class Sidebar extends React.Component {
           <div><HomeIcon/></div>
           <div>Home</div>
         </SideItemBox>
-        <SideItemBox>
+        <SideItemBox onClick = 
+          {this.handleTrending1}>
           <div><WhatshotIcon/></div>
           <div>Trending</div>
         </SideItemBox>

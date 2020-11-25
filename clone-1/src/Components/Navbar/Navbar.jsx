@@ -30,7 +30,8 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       search: "",
-      searchlist: []
+      searchlist: [],
+      isAuth: false
     };
   }
 
@@ -82,7 +83,7 @@ class Navbar extends React.Component {
   };
 
   render() {
-    const { search, searchlist } = this.state;
+    const { search, searchlist, isAuth } = this.state;
     const { handleSearch, handleToggle } = this.context;
     // console.log(data);
     return (
@@ -127,7 +128,7 @@ class Navbar extends React.Component {
             </Icon>
 
             <Icon>
-              <AccountCircleIcon />
+              <AccountCircleIcon/>
             </Icon>
           </div>
         </div>

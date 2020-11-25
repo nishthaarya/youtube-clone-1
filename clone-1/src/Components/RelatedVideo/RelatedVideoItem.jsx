@@ -28,6 +28,7 @@ function diffDate(createdDate) {
 function RelatedVideoItem(el) {
   let createdDate = new Date(el.snippet.publishedAt);
   let diff = diffDate(createdDate);
+  console.log(el)
   return (
     <div >
       <div>
@@ -38,7 +39,7 @@ function RelatedVideoItem(el) {
           <h5>{el.snippet.title}</h5>
           <p >{el.snippet.channelTitle}</p>
           <p >
-            <span> 10k views</span>
+            <span> 20k views</span>
             <span>{diff}</span>
           </p>
         </div>
