@@ -7,8 +7,9 @@ import { Login } from "./Login/Login";
 const Routes = () => {
   return (
     <div>
+
     <Switch>
-        <Route path="/" exact render={() => <Home />} />
+        <Route path="/"  render={() => <Home />} />
 
         <Route path="/relatedvideo/:id"
         exact 
