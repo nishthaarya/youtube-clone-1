@@ -23,7 +23,7 @@ function diffDate(createdDate) {
     : `${secDiff} seconds ago`;
 }
 
-function VideoItem(el) {
+function RelatedVideoItem(el) {
   let createdDate = new Date(el.snippet.publishedAt);
   let diff = diffDate(createdDate);
   return (
@@ -46,4 +46,4 @@ function VideoItem(el) {
   );
 }
 
-export { VideoItem };
+export { RelatedVideoItem };

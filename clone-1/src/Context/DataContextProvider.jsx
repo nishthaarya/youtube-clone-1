@@ -19,13 +19,14 @@ export default class DataContextProvider extends React.Component {
         this.setState({
           loading: true
         });
+
         axios({
           method: "get",
           url: "https://youtube.googleapis.com/youtube/v3/videos",
           params: {
             part: "snippet",
             chart: "mostPopular",
-            key: "AIzaSyADQjWaijqYWRy56w4wSwaWBngO49tJa_M",
+            key: "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q",
             maxResults: 50,
           },
         })

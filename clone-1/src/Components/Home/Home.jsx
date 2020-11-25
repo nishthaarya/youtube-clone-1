@@ -4,6 +4,7 @@ import { Navbar } from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import { Videos } from '../Videos/Videos'
 import styles from './Home.module.css'
+import { RelatedVideo } from '../RelatedVideo/RelatedVideo'
 
 export default class Home extends React.Component {
     render() {
@@ -21,7 +22,7 @@ export default class Home extends React.Component {
                             <Categories/>
                         </div>
                         <div className = {styles.vids}>
-                            <Videos/>
+                            <RelatedVideo/>
                         </div>
                     </div>
                 </div>
