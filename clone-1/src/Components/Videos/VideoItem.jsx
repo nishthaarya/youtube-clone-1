@@ -27,7 +27,7 @@ function VideoItem(item){
         <div className={styles.Video_card}>
             <div className={styles.thumbnail}>
             {/* <div className={styles.thumbnailshover}></div> */}
-            <img
+            <img className = {styles.images}
               src={item.snippet.thumbnails.standard.url}
               alt="thumbnail"
             />

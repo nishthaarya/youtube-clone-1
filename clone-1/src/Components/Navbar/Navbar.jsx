@@ -105,12 +105,12 @@ class Navbar extends React.Component {
               onChange={this.handleChange}
             />
 
-            <div id="searchButton">
+            <button id="searchButton">
               <SearchIcon
-                style={{ color: "grey", fontSize: "medium" }}
+                style={{ color: "grey", fontSize: "20px" }}
                 onClick={() => handleSearch(search)}
               />
-            </div>
+            </button>
           </div>
 
           <div className="right">

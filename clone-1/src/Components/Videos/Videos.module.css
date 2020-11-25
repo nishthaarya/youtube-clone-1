@@ -9,7 +9,7 @@
 }
 .Video_card{
     width: 23%;
-    margin: 10px;
+    margin: 8px;
     cursor: pointer;
     position: relative;
     
@@ -19,7 +19,6 @@
 
 }
 .Video_card > .thumbnail{
-    width: 100%;
     margin-bottom: 5px;
     
 }
