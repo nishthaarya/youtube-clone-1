@@ -1,0 +1,85 @@
+.Trending {
+    background-color: #f9f9f9;
+    font-family: "Roboto , sans-serif";
+  }
+  .trending_header {
+    display: flex;
+  }
+  .trending_header span {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 25px;
+    cursor: pointer;
+  }
+  .trending_header span img {
+    border-radius: 50%;
+    width: 80px;
+  }
+  .trending_header span p {
+    color: #404040;
+    text-align: center;
+    font-weight: 550;
+    font-size: 17px;
+  }
+  hr {
+    border: 0.8px solid #f0f0f0;
+  }
+  .Video_card {
+    width: 70%;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+  }
+  .Video_card > .thumbnail {
+    margin: 0 20px;
+    width: 320px;
+  }
+  
+  .Video_card > .thumbnail > span {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    top: 10px;
+    display: none;
+  }
+  .Video_card > .thumbnail:hover > span {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    left: 290px;
+    flex-direction: column;
+    transition: 0.8s;
+  }
+  .channel_views_years {
+    display: flex;
+  }
+  .VideoInfo > h5 {
+    font-size: 19px;
+    margin: 5px 0;
+  }
+  .channel_views_years,
+  .description {
+    color: black;
+    opacity: 0.8;
+    margin: 1px;
+    font-size: 15px;
+  }
+  .channel_views_years span {
+    font-size: 17px;
+    padding-bottom: 8px;
+  }
+  .description {
+    overflow: hidden;
+    margin-top: 15px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  .channel_views_years > p {
+    margin: 0 3px;
+  }
+  

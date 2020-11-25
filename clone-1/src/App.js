@@ -1,10 +1,13 @@
+
 import React from 'react'
-import {Navbar} from './Components/Navbar/Navbar'
+import logo from './logo.svg';
+import './App.css';
+
 
 function App() {
   return (
-    <div style={{ backgroundColor:"#F9F9F9"}}>
-     <Navbar/>
+    <div className="App">
+    hi
     </div>
   );
 }

@@ -8,12 +8,36 @@ export default class DataContextProvider extends React.Component {
         super(props)
         this.state = {
             data: [],
-            isToggle: false
+            isToggle: false,
+            loading: false
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
     }
-
+    componentDidMount() {
+        this.setState({
+          loading: true
+        });
+        axios({
+          method: "get",
+          url: "https://youtube.googleapis.com/youtube/v3/videos",
+          params: {
+            part: "snippet",
+            chart: "mostPopular",
+            key: "AIzaSyBn6b2JTx6poyQPcJ9KdGlkmrsPxF2xL1U",
+            maxResults: 50
+          }
+        })
+          .then((res) => {
+            this.setState({
+              data: res.data.items,
+              loading: false
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     handleSearch(search){
     var api_key = "AIzaSyDnOErpl_HkR8b2BYSWlA4u6Ghtyr4ytSs";
         axios({
@@ -54,14 +78,15 @@ export default class DataContextProvider extends React.Component {
          } = this;
 
         const {
-            data
+            data, loading, isToggle
          } = this.state;
 
         const value =
          {
             handleSearch,
             handleToggle,
-            data
+            data,
+            isToggle
         };
         return (
            <DataContext.Provider value={value}>
@@ -72,3 +97,4 @@ export default class DataContextProvider extends React.Component {
 }
 
 export {DataContext, DataContextProvider}
+
