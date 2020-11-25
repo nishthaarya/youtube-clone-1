@@ -38,7 +38,6 @@ class RelatedVideo extends React.Component {
       })
       .catch((err) => console.log(err));
   }
-
   handleChange = (e) => {
     e.persist();
     const { value } = e.target;

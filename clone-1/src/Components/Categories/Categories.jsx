@@ -10,7 +10,7 @@ const BigBox = styled.div`
 `;
 
 const Category = styled.button`
-  padding: 5px 12px;
+  padding: 7px 14px;
   background-color: #f2f2f2;
   color: #030303;
   border-radius: 15px;
@@ -39,9 +39,8 @@ export default class Categories extends React.Component {
         "React",
         "Dancehall",
         "Coding",
-        "Naika",
         "Comedy",
-        "Contemporary"
+        "Funny"
       ]
     };
   }

@@ -42,8 +42,8 @@ function VideoItem(item){
 
             <h5>{item.snippet.title}</h5>
             <p className={styles.channelname}>{item.snippet.channelTitle}</p>
-            <p className={styles.viewsandtime}><span> 10k views</span>
-                <span>{diff}</span>
+    <p className={styles.viewsandtime}><span> 20k views • {diff}</span>
+                
             </p>
             </div>
             </div>

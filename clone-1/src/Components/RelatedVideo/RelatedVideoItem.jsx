@@ -1,4 +1,7 @@
+
+
 import React from "react";
+
 
 function diffDate(createdDate) {
   const date = new Date(createdDate).getTime();
@@ -22,7 +25,6 @@ function diffDate(createdDate) {
     ? `${minutesDiff} minutes ago`
     : `${secDiff} seconds ago`;
 }
-
 function RelatedVideoItem(el) {
   let createdDate = new Date(el.snippet.publishedAt);
   let diff = diffDate(createdDate);
@@ -31,7 +33,6 @@ function RelatedVideoItem(el) {
       <div>
         <img src={el.snippet.thumbnails.default.url} alt="thumbnail" />
       </div>
-      
       <div>
         <div >
           <h5>{el.snippet.title}</h5>
@@ -45,5 +46,5 @@ function RelatedVideoItem(el) {
     </div>
   );
 }
-
 export { RelatedVideoItem };
+
