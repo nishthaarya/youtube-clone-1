@@ -33,17 +33,7 @@ class Navbar extends React.Component {
       searchlist: []
     };
   }
-
-  // debouncerer = (delay, callback) => {
-  //   var debounce;
-  //   return function () {
-  //     var value = this.state.search;
-  //     debounce && clearTimeout(debounce);
-  //     debounce = setTimeout(function () {
-  //       callback(value);
-  //     }, delay);
-  //   };
-  // };
+  
   componentDidMount(){
     console.log(this.state.search);
   }
@@ -73,7 +63,6 @@ class Navbar extends React.Component {
   }
 
   handleChange = (e) => {
-    e.persist()
     const { value } = e.target;
     this.setState({
       search: value,

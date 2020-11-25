@@ -12,7 +12,7 @@ class RelatedVideo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoId: "EeWXw6UuPrM",
+      videoId: this.context.videoId,
       relatedVideos: [],
     };
   }

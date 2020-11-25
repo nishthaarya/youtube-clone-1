@@ -22,7 +22,7 @@ export default class Home extends React.Component {
                             <Categories/>
                         </div>
                         <div className = {styles.vids}>
-                            <RelatedVideo/>
+                            <Videos />
                         </div>
                     </div>
                 </div>

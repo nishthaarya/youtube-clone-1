@@ -10,10 +10,12 @@ export default class DataContextProvider extends React.Component {
             data: [],
             isToggle: false,
             loading: false,
-            videoId: ""
+            videoId: "",
+            isSearching: false
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.sendVideoId = this.sendVideoId.bind(this);
     }
     componentDidMount() {
         this.setState({
@@ -41,7 +43,7 @@ export default class DataContextProvider extends React.Component {
           });
       }
     handleSearch(search){
-    var api_key = "AIzaSyDnOErpl_HkR8b2BYSWlA4u6Ghtyr4ytSs";
+    var api_key = "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q";
         axios({
           method: "get",
           url:
@@ -57,7 +59,8 @@ export default class DataContextProvider extends React.Component {
               console.log(response.data.items);
               return (
                   this.setState({
-                      data: response.data.items
+                      data: response.data.items,
+                      isSearching: true
                   })
               )
           })
@@ -76,11 +79,14 @@ export default class DataContextProvider extends React.Component {
           })
         }
     }
+
     sendVideoId(id){
       this.setState({
         videoId: id
       })
+      console.log(id)
     }
+
     componentDidUpdate(){
         console.log(this.state.isToggle)
     }
@@ -93,7 +99,7 @@ export default class DataContextProvider extends React.Component {
          } = this;
 
         const {
-            data, loading, isToggle, videoId
+            data, loading, isToggle, videoId, isSearching
          } = this.state;
 
         const value =
@@ -103,7 +109,8 @@ export default class DataContextProvider extends React.Component {
             data,
             isToggle,
             sendVideoId,
-            videoId
+            videoId,
+            isSearching
         };
         return (
            <DataContext.Provider value={value}>
