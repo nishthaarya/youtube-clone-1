@@ -62,10 +62,17 @@ export default class DataContextProvider extends React.Component {
           .catch((err) => console.log(err));
     }
     handleToggle(){
-        const {isToggle} = this.state ;
-        this.setState({
-            isToggle: !isToggle
-        })
+        const {isToggle} = this.state
+        if (isToggle === false) {
+          this.setState({
+            isToggle: true
+          })
+        }
+        else {
+          this.setState({
+            isToggle: false
+          })
+        }
     }
     componentDidUpdate(){
         console.log(this.state.isToggle)

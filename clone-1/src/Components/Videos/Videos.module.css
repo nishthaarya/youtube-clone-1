@@ -69,17 +69,17 @@
     width: 100%;
 }
 .Video_card > div > div > h5{
-    font-size: 1rem;
-    line-height: 0.8rem;
-    line-height: 1.2rem;
+    font-size: 14.5px;
+    line-height: 1rem;
     margin: 5px 0;
+    font-weight: 650;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .Video_card >div > div > .channelname{
     color: black;
     opacity: 0.8;
     margin: 1px;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
+    font-size: 14px;
 }
 .Video_card > div > div > .viewsandtime{
     color: black;

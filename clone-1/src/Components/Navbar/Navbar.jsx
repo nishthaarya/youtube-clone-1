@@ -2,13 +2,28 @@ import React from "react";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import VideoCallIcon from "@material-ui/icons/VideoCall";
+import VideoCallIcon from '@material-ui/icons/VideoCall';
 import AppsIcon from "@material-ui/icons/Apps";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "./Navbar.css";
 import { DataContext } from "../../Context/DataContextProvider";
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Icon = styled.div`
+  font-size: 15px;
+  margin-right: 23px;
+`
+const Menu = styled.div`
+  padding: 10px 20px;
+  color: #606060;
+  text-align: center;
+  line-height: 20px;
+     &:hover {
+      background-color: #f2f2f2;
+     }
+`
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -74,13 +89,12 @@ class Navbar extends React.Component {
       <>
         <div className="navbarContainer">
           <div className="left">
-            <button id="sidebarToggle" onClick={handleToggle}>
-              <MenuIcon id="icon" />
-            </button>
+            <Menu onClick={handleToggle}>
+              <MenuIcon/>
+            </Menu>
 
-            <div id="homeBtn">
-              <YouTubeIcon id="icon" style={{ color: "red" }} />
-              <h1>YouTube</h1>
+            <div>
+              <img src = "https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg" className = "homeBtn"/>
             </div>
           </div>
           <div className="center">
@@ -91,30 +105,30 @@ class Navbar extends React.Component {
               onChange={this.handleChange}
             />
 
-            <button id="searchButton">
+            <div id="searchButton">
               <SearchIcon
-                style={{ color: "grey" }}
+                style={{ color: "grey", fontSize: "medium" }}
                 onClick={() => handleSearch(search)}
               />
-            </button>
+            </div>
           </div>
 
           <div className="right">
-            <button id="createVideo">
-              <VideoCallIcon id="icon" />
-            </button>
+            <Icon>
+              <VideoCallIcon/>
+            </Icon>
 
-            <button id="appsicon">
+            <Icon>
               <AppsIcon />
-            </button>
+            </Icon>
 
-            <button id="createVideo">
+            <Icon>
               <NotificationsIcon />
-            </button>
+            </Icon>
 
-            <button id="createVideo">
+            <Icon>
               <AccountCircleIcon />
-            </button>
+            </Icon>
           </div>
         </div>
 

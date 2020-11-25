@@ -1,0 +1,17 @@
+.bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 250px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.home {
+    font-family: Roboto, Arial, sans-serif;
+}
