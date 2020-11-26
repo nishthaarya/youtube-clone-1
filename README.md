@@ -20,7 +20,7 @@ Cloning Youtube
 
 #### npm start
 
-### Technologies Used
+## Technologies Used
 ### REACT
 ### YOUTUBE API
 ### MATERIAL UI
