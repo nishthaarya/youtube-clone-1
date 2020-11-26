@@ -24,7 +24,7 @@ class Trending extends React.Component {
         chart: "mostPopular",
         maxResults: 50,
         regionCode: "IN",
-        key: "AIzaSyBn6b2JTx6poyQPcJ9KdGlkmrsPxF2xL1U"
+        key: "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk"
       }
     }).then((res) => {
       this.setState({

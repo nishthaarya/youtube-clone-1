@@ -6,6 +6,7 @@ import { Trending } from "../Components/Trending/Trending";
 import { Videos } from "../Components/Videos/Videos";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import {RelatedVideo} from '../Components/RelatedVideo/RelatedVideo'
+import { Login } from "../Components/Login/Login";
 class Routes extends React.Component {
   render() {
     return (
@@ -14,6 +15,7 @@ class Routes extends React.Component {
         <Switch>
           <Route path="/" exact render={(props) => <Home {...props}/>} />
           <Route path="/trending" exact render={() => <Trending />} />
+          <Route path = "/login" exact render={() => <Login/>} />
           <Route path= "/videos/:id" exact render ={(props)=><RelatedVideo {...props} />} />
           <Route path= "/trending" exact render = {(props) => <Trending {...props} />} />
           <Route render={() => <div> 404 page, Page not found</div>} />

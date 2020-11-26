@@ -26,6 +26,14 @@ function diffDate(createdDate) {
     : `${secDiff} seconds ago`;
 }
 
+function selectVideo(id){
+  const { sendVideoId } = this.context;
+  const { history } = this.props;
+  console.log(this.props);
+  history.push(`/videos/${id}`);
+  sendVideoId(id)
+}
+
 function TrendingItems(item) {
   let views = item.statistics.viewCount;
   views =

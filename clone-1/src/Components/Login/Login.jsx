@@ -3,15 +3,29 @@ import styled from 'styled-components';
 import styles from './Login.module.css'
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import SettingsIcon from '@material-ui/icons/Settings';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import InputIcon from '@material-ui/icons/Input';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import TranslateIcon from '@material-ui/icons/Translate';
+import LanguageIcon from '@material-ui/icons/Language';
+import SecurityIcon from '@material-ui/icons/Security';
+import HelpIcon from '@material-ui/icons/Help';
+import FeedbackIcon from '@material-ui/icons/Feedback';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+import { DataContext } from "../../Context/DataContextProvider";
 
 const SideBox = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   float: right;
-  width: 280px;
+  width: 300px;
   background-color: #ffffff;
   color: #606060 !important;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  z-index: 999;
 `;
 
 const ItemName = styled.div`
@@ -63,40 +77,21 @@ class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isAuth: false,
-            email: "aryanishthaa@gmail.com",
-            password: ""
-        }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
-
-    handleChange(e) {
-        const {name, value} = e.target;
-        this.setState({
-            [name]: value
-        })
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const {email, password} = this.state
-
-        if (email === "arynishthaa@gmail.com" && password === "nishtha") {
-            this.setState({
-                isAuth: true
-            })
+            email: "aryanishthaa@gmail.com"
         }
     }
 
     render() {
-        const {email, password, isAuth} = this.state
+        console.log(this.props)
+        const {email} = this.state
 
-        return !isAuth ? (
+        const {isAuth} = this.context
+        console.log("isauth -- " , isAuth)
+
+        if (isAuth === true) { return (
             <SideBox className = {styles.box}>
                 <SideItem1 className = {styles.name}>
-                    <div><AccountCircleIcon fontSize = "large"/> </div>
+                    <div className = {styles.icon1}><AccountCircleIcon fontSize = "large"/> </div>
                     <div className = {styles.realname}>
                         <div> Nishtha Arya </div>
                         <div className = {styles.email}> {email} </div>
@@ -109,12 +104,61 @@ class Login extends React.Component {
                     <ItemName>Create a channel</ItemName>
                 </SideItem>
                 <SideItem>
-
+                    <MonetizationOnIcon/>
                     <ItemName>Purchases and Memberships</ItemName>
                 </SideItem>
+                <SideItem>
+                    <SettingsIcon/>
+                    <ItemName>YouTube Studio</ItemName>
+                </SideItem>
+                <SideItem>
+                    <PeopleAltIcon/>
+                    <ItemName>Switch account</ItemName>
+                </SideItem>
+                <SideItem>
+                    <InputIcon/>
+                    <ItemName>Sign out</ItemName>
+                </SideItem>
+                <Line/>
+                <SideItem>
+                    <Brightness4Icon/>
+                    <ItemName>Appearance: Light</ItemName>
+                </SideItem>
+                <SideItem>
+                    <TranslateIcon/>
+                    <ItemName>Language: English</ItemName>
+                </SideItem>
+                <SideItem>
+                    <LanguageIcon/>
+                    <ItemName>Location: India</ItemName>
+                </SideItem>
+                <SideItem>
+                    <SettingsIcon/>
+                    <ItemName>Settings</ItemName>
+                </SideItem>
+                <SideItem>
+                    <SecurityIcon/>
+                    <ItemName> Your data in YouTube </ItemName>
+                </SideItem>
+                <SideItem>
+                    <HelpIcon/>
+                    <ItemName>Help</ItemName>
+                </SideItem>
+                <SideItem>
+                    <FeedbackIcon/>
+                    <ItemName>Send Feedback</ItemName>
+                </SideItem>
+                <SideItem>
+                    <KeyboardIcon/>
+                    <ItemName>Keyboard Shortcuts</ItemName>
+                </SideItem>
+                <Line/>
+                <SideItem>
+                    <ItemName>Restricted Mode: Off</ItemName>
+                </SideItem>
             </SideBox>
-        ) : (<SideBox></SideBox>)
+        ) }
     }
 }
-
+Login.contextType = DataContext
 export {Login}

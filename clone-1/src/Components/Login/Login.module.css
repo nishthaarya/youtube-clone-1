@@ -8,6 +8,10 @@
     line-height: 0%;
 }
 
+.icon1 {
+    margin-top: 10px;
+}
+
 .realname {
     margin-top: 10px;
     margin-left: 20px;
@@ -17,15 +21,14 @@
 .email {
     font-size: 14px;
     font-weight: 450;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .gmail {
     color: blue;
-    margin-top: 40px;
+    margin-top: 20px;
     font-size: 15px;
     font-weight: normal;
-    margin-bottom: 10px;
 }
 
 .gmail:hover {
@@ -35,5 +38,5 @@
 
 .box {
     margin-top: 20px;
-    border: .25px solid black;
+    border: .25px solid #909090
 }

@@ -1,7 +1,40 @@
 // AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q
 
 import React from "react";
+import styles from './RelatedVid.module.css'
+import styled from 'styled-components'
 
+const Card = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`
+
+const Img = styled.img `
+  width: 170px;
+  height: 100px
+`
+
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px
+`
+
+const Title = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+`
+const Channel = styled.div`
+  color: #757474;
+  font-size: 13px;
+  font-weight: 400;
+  padding-top: 5px
+`
 
 function diffDate(createdDate) {
   const date = new Date(createdDate).getTime();
@@ -30,22 +63,22 @@ function RelatedVideoItem(el) {
   let diff = diffDate(createdDate);
   console.log(el)
   return (
-    <div >
+    <Card>
       <div>
-        <img src={el.snippet.thumbnails.default.url} alt="thumbnail" />
+        <Img src = {el.snippet.thumbnails.default.url}></Img>
       </div>
-      <div>
-        <div >
-          <h5>{el.snippet.title}</h5>
-          <p >{el.snippet.channelTitle}</p>
-          <p >
-            <span> 20k views</span>
-            <span>{diff}</span>
-          </p>
-        </div>
-      </div>
-    </div>
+      <Right>
+        <Title> {el.snippet.title} </Title>
+        <Channel> {el.snippet.channelTitle} </Channel>
+        <Channel> 108k views • {diff} </Channel>
+      </Right>
+    </Card>
   );
 }
 export { RelatedVideoItem };
 
+//{el.snippet.thumbnails.default.url}
+// {el.snippet.title}
+// {el.snippet.channelTitle}
+// views
+// {diff}

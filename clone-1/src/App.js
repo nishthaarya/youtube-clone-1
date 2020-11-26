@@ -12,7 +12,7 @@ import { Routes } from './Routes/Routes';
 function App() {
   return (
     <div>
-      <Login/>
+      <Routes/>
     </div>
   );
 }

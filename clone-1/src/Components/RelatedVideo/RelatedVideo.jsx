@@ -21,7 +21,8 @@ const Line = styled.div`
   width: 100%;
   height: .5px;
   background-color: #909090;
-  opacity: .2
+  opacity: .2;
+  margin-bottom: 10px;
 `
 
 class RelatedVideo extends React.Component {
@@ -33,7 +34,7 @@ class RelatedVideo extends React.Component {
     };
   }
   componentDidMount() {
-    var api_key = "AIzaSyAwwGZv6c1QFexBeicJhRd1QXuh41XrcOA";
+    var api_key = "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk";
     axios({
       method: "get",
       url: "https://youtube.googleapis.com/youtube/v3/search",
@@ -112,9 +113,15 @@ class RelatedVideo extends React.Component {
                 <div>
                 <PersonIcon fontSize = "large"/>
                 </div>
-              <div>{relatedVideos[0]?.snippet.channelTitle}
-              <br/>
-              {relatedVideos[0]?.snippet.description}</div>
+              <div classname = {styles.title1}>
+                <div className = {styles.finaltitle}>
+                  <div> {relatedVideos[0]?.snippet.channelTitle} </div>
+                <button className = {styles.subscribe}>SUBSCRIBE</button>
+                </div>
+              <div className = {styles.description}>
+              {relatedVideos[0]?.snippet.description}
+              </div>
+              </div>
               </div>
             </div>
           </div>

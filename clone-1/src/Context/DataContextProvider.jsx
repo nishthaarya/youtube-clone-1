@@ -10,12 +10,22 @@ export default class DataContextProvider extends React.Component {
             loading: false,
             videoId: "",
             isSearching: false,
-            trending: false
+            trending: false,
+            isAuth: true
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
         this.sendVideoId = this.sendVideoId.bind(this);
         this.handleTrending = this.handleTrending.bind(this)
+        this.handleAuth = this.handleAuth.bind(this)
+    }
+
+    handleAuth() {
+      const {isAuth} = this.state
+      console.log(isAuth, "isAuth")
+      this.setState({
+        isAuth: !isAuth
+      })
     }
 
     handleTrending() {
@@ -41,7 +51,7 @@ export default class DataContextProvider extends React.Component {
           params: {
             part: "snippet",
             chart: "mostPopular",
-            key: "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q",
+            key: "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk",
             maxResults: 50,
           },
         })
@@ -56,7 +66,7 @@ export default class DataContextProvider extends React.Component {
           });
       }
     handleSearch(search){
-    var api_key = "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q";
+    var api_key = "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk";
         axios({
           method: "get",
           url:
@@ -106,10 +116,11 @@ export default class DataContextProvider extends React.Component {
             handleSearch,
             handleToggle,
             sendVideoId,
-            handleTrending
+            handleTrending,
+            handleAuth
          } = this;
         const {
-            data, loading, isToggle, videoId, isSearching, trending
+            data, loading, isToggle, videoId, isSearching, trending, isAuth
          } = this.state;
         const value =
          {
@@ -121,7 +132,9 @@ export default class DataContextProvider extends React.Component {
             videoId,
             isSearching,
             trending,
-            handleTrending
+            handleTrending,
+            handleAuth,
+            isAuth
         };
         return (
            <DataContext.Provider value={value}>

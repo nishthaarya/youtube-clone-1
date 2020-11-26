@@ -10,6 +10,8 @@ import "./Navbar.css";
 import { DataContext } from "../../Context/DataContextProvider";
 import axios from 'axios'
 import styled from 'styled-components'
+import { Modal } from "@material-ui/core";
+import { Login } from "../Login/Login";
 
 const Icon = styled.div`
   font-size: 15px;
@@ -31,10 +33,17 @@ class Navbar extends React.Component {
     this.state = {
       search: "",
       searchlist: [],
-      isAuth: false
+      showModal: false,
+      closeModal: true
     };
+    this.toggleModal = this.toggleModal.bind(this)  
   }
 
+  toggleModal(){
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
   // debouncerer = (delay, callback) => {
   //   var debounce;
   //   return function () {
@@ -84,7 +93,7 @@ class Navbar extends React.Component {
 
   render() {
     const { search, searchlist, isAuth } = this.state;
-    const { handleSearch, handleToggle } = this.context;
+    const { handleSearch, handleToggle, handleAuth } = this.context;
     // console.log(data);
     return (
       <>
@@ -126,13 +135,16 @@ class Navbar extends React.Component {
             <Icon>
               <NotificationsIcon />
             </Icon>
-
+            <div  onClick = {this.toggleModal} >
             <Icon>
-              <AccountCircleIcon/>
+              <AccountCircleIcon />
             </Icon>
+            </div>
           </div>
         </div>
-
+        <Modal open={this.state.showModal} onClose = {this.toggleModal} >
+          <Login/>
+        </Modal>
         <div className="searchlist">
           <ul>
             {searchlist
