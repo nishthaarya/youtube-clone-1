@@ -1,5 +1,3 @@
-// AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q
-
 import React from "react";
 import styles from './RelatedVid.module.css'
 import styled from 'styled-components'
@@ -61,7 +59,7 @@ function diffDate(createdDate) {
 function RelatedVideoItem(el) {
   let createdDate = new Date(el.snippet.publishedAt);
   let diff = diffDate(createdDate);
-  console.log(el)
+  console.log(el);
   return (
     <Card>
       <div>

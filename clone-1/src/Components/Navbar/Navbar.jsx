@@ -1,6 +1,7 @@
 import React from "react";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import MenuIcon from "@material-ui/icons/Menu";
+import { DebounceInput } from "react-debounce-input";
 import SearchIcon from "@material-ui/icons/Search";
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import AppsIcon from "@material-ui/icons/Apps";
@@ -83,37 +84,48 @@ class Navbar extends React.Component {
   }
 
   handleChange = (e) => {
-    e.persist()
     const { value } = e.target;
+    const { handleSearch } = this.context;
+
     this.setState({
       search: value,
     });
-    
+    handleSearch(this.state.search);
   };
 
   render() {
     const { search, searchlist, isAuth } = this.state;
     const { handleSearch, handleToggle, handleAuth } = this.context;
     // console.log(data);
+    var list = searchlist?.filter((el, index) => index < 15);
     return (
       <>
         <div className="navbarContainer">
           <div className="left">
             <Menu onClick={handleToggle}>
-              <MenuIcon/>
+              <MenuIcon />
             </Menu>
 
             <div>
-              <img src = "https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg" className = "homeBtn"/>
+              <img
+                src="https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg"
+                className="homeBtn"
+              />
             </div>
           </div>
           <div className="center">
-            <input
+            <DebounceInput
+              minLength={2}
+              debounceTimeout={300}
+              onChange={this.handleChange}
+            />
+
+            {/* <input
               id="searchBar"
               placeholder="Search"
               value={search}
               onChange={this.handleChange}
-            />
+            /> */}
 
             <button id="searchButton">
               <SearchIcon
@@ -125,7 +137,7 @@ class Navbar extends React.Component {
 
           <div className="right">
             <Icon>
-              <VideoCallIcon/>
+              <VideoCallIcon />
             </Icon>
 
             <Icon>

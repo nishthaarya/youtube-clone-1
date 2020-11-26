@@ -45,11 +45,12 @@ export default class DataContextProvider extends React.Component {
         this.setState({
           loading: true
         });
+
         axios({
           method: "get",
           url: "https://youtube.googleapis.com/youtube/v3/videos",
           params: {
-            part: "snippet",
+            part: "snippet, statistics, contentDetails",
             chart: "mostPopular",
             key: "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk",
             maxResults: 50,
@@ -65,27 +66,25 @@ export default class DataContextProvider extends React.Component {
             console.log(err);
           });
       }
+
     handleSearch(search){
     var api_key = "AIzaSyDHSYjrsFEIV2v9_Y6h9MsrVmrrIZVXCHk";
         axios({
           method: "get",
-          url:
-            "https://youtube.googleapis.com/youtube/v3/search",
+          url: "https://youtube.googleapis.com/youtube/v3/search",
           params: {
             part: "snippet",
             key: api_key,
             maxResults: 50,
-            q : search
+            q: search,
           },
         })
           .then((response) => {
-              console.log(response.data.items);
-              return (
-                  this.setState({
-                      data: response.data.items,
-                      isSearching: true
-                  })
-              )
+            console.log(response.data.items);
+            return this.setState({
+              data: response.data.items,
+              isSearching: true,
+            });
           })
           .catch((err) => console.log(err));
     }
@@ -108,6 +107,7 @@ export default class DataContextProvider extends React.Component {
       })
       console.log(id)
     }
+  
     componentDidUpdate(){
         console.log(this.state.isToggle)
     }
