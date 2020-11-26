@@ -17,6 +17,8 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import HelpIcon from "@material-ui/icons/Help";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import FlagIcon from "@material-ui/icons/Flag";
+import { DataContext } from "../../Context/DataContextProvider";
+import { Link } from "react-router-dom";
 
 const SideBox = styled.div`
   display: flex;
@@ -65,6 +67,7 @@ const SideItem = styled.div`
 const ItemName = styled.div`
   margin-left: 30px;
   color: #0c0c0c;
+  font-size: 14px;
 `;
 
 const Foots = styled.div`
@@ -74,26 +77,51 @@ const Foots = styled.div`
   margin-right: 5px;
 `;
 
+const SideSmallBox = styled.div`
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+`
+const SideItemBox = styled.div`
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: #606060;
+  text-align: center;
+  line-height: 20px;
+     &:hover {
+      background-color: #f2f2f2;
+     }
+`
+
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      toggle: false
-    };
+    this.handleTrending1 = this.handleTrending1.bind(this)
+  }
+
+  handleTrending1() {
+    const {handleTrending} = this.context
+    handleTrending()
   }
 
   render() {
-    const { toggle } = this.state;
+    const { isToggle } = this.context;
 
-    return !toggle ? (
+    return !isToggle ? (
       <SideBox>
         <SideItem>
           <HomeIcon />
           <ItemName>Home</ItemName>
         </SideItem>
-        <SideItem>
+        <SideItem
+        onClick = 
+          {this.handleTrending1}
+        >
           <WhatshotIcon />
-          <ItemName>Trending</ItemName>
+          <ItemName 
+          >Trending</ItemName>
         </SideItem>
         <SideItem>
           <SubscriptionsIcon />
@@ -200,7 +228,27 @@ export default class Sidebar extends React.Component {
         </SideItem>
       </SideBox>
     ) : (
-      <div></div>
+      <SideSmallBox>
+        <SideItemBox>
+          <div><HomeIcon/></div>
+          <div>Home</div>
+        </SideItemBox>
+        <SideItemBox onClick = 
+          {this.handleTrending1}>
+          <div><WhatshotIcon/></div>
+          <div>Trending</div>
+        </SideItemBox>
+        <SideItemBox>
+          <div><SubscriptionsIcon/></div>
+          <div>Subscriptions</div>
+        </SideItemBox>
+        <SideItemBox>
+          <div><VideoLibraryIcon/></div>
+          <div>Library</div>
+        </SideItemBox>
+      </SideSmallBox>
     );
   }
 }
+
+Sidebar.contextType = DataContext

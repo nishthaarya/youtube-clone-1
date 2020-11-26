@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
 const DataContext = React.createContext();
-
 export default class DataContextProvider extends React.Component {
     constructor(props) {
         super(props)
@@ -14,6 +12,22 @@ export default class DataContextProvider extends React.Component {
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.sendVideoId = this.sendVideoId.bind(this);
+        this.handleTrending = this.handleTrending.bind(this)
+    }
+
+    handleTrending() {
+      const {trending} = this.state
+      if (trending === false) {
+        this.setState({
+          trending: true
+        })
+      }
+      else {
+        this.setState({
+          trending: false
+        })
+      }
     }
     componentDidMount() {
         this.setState({
@@ -41,7 +55,7 @@ export default class DataContextProvider extends React.Component {
           });
       }
     handleSearch(search){
-    var api_key = "AIzaSyDnOErpl_HkR8b2BYSWlA4u6Ghtyr4ytSs";
+    var api_key = "AIzaSyB54tyieozL3BLkpxHssdGOcdI3RCzVs_Q";
         axios({
           method: "get",
           url:
@@ -57,17 +71,31 @@ export default class DataContextProvider extends React.Component {
               console.log(response.data.items);
               return (
                   this.setState({
-                      data: response.data.items
+                      data: response.data.items,
+                      isSearching: true
                   })
               )
           })
           .catch((err) => console.log(err));
     }
     handleToggle(){
-        const {isToggle} = this.state ;
-        this.setState({
-            isToggle: !isToggle
-        })
+        const {isToggle} = this.state
+        if (isToggle === false) {
+          this.setState({
+            isToggle: true
+          })
+        }
+        else {
+          this.setState({
+            isToggle: false
+          })
+        }
+    }
+    sendVideoId(id){
+      this.setState({
+        videoId: id
+      })
+      console.log(id)
     }
     sendVideoId(id){
       this.setState({
@@ -77,18 +105,16 @@ export default class DataContextProvider extends React.Component {
     componentDidUpdate(){
         console.log(this.state.isToggle)
     }
-
     render() {
         const { 
             handleSearch,
             handleToggle,
-            sendVideoId
+            sendVideoId,
+            handleTrending
          } = this;
-
         const {
-            data, loading, isToggle, videoId
+            data, loading, isToggle, videoId, isSearching, trending
          } = this.state;
-
         const value =
          {
             handleSearch,
@@ -96,7 +122,10 @@ export default class DataContextProvider extends React.Component {
             data,
             isToggle,
             sendVideoId,
-            videoId
+            videoId,
+            isSearching,
+            trending,
+            handleTrending
         };
         return (
            <DataContext.Provider value={value}>
@@ -105,6 +134,5 @@ export default class DataContextProvider extends React.Component {
         )
     }
 }
-
 export {DataContext, DataContextProvider}
 

@@ -6,19 +6,30 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ScreenShareIcon from "@material-ui/icons/ScreenShare";
 import PlaylistAddSharpIcon from "@material-ui/icons/PlaylistAddSharp";
-import NotificationsSharpIcon from "@material-ui/icons/NotificationsSharp";
+import PersonIcon from '@material-ui/icons/Person';
+
+const BASE_EMBED_URL = 'https://www.youtube.com/embed/';
+
+const VideoPage = styled.div`
+  
+`
+
+const Line = styled.div`
+  width: 100%;
+  height: .5px;
+  background-color: #909090;
+  opacity: .2
+`
 
 class RelatedVideo extends React.Component {
   constructor(props) {
-    super(props);
     this.state = {
-      videoId: "EeWXw6UuPrM",
       relatedVideos: [],
+     // videoId: this.context.videoId
     };
   }
-
   componentDidMount() {
-    var api_key = "AIzaSyDKJVc3u1Y_Q3hMf9b5WMkSF6mHT-4c69Q";
+    var api_key = "AIzaSyAwwGZv6c1QFexBeicJhRd1QXuh41XrcOA";
     axios({
       method: "get",
       url: "https://youtube.googleapis.com/youtube/v3/search",
@@ -27,7 +38,7 @@ class RelatedVideo extends React.Component {
         key: api_key,
         maxResults: 20,
         type: "video",
-        relatedToVideoId: this.state.videoId,
+        relatedToVideoId: this.context.videoId,
       },
     })
       .then((response) => {
@@ -38,7 +49,6 @@ class RelatedVideo extends React.Component {
       })
       .catch((err) => console.log(err));
   }
-
   handleChange = (e) => {
     e.persist();
     const { value } = e.target;
@@ -68,43 +78,44 @@ class RelatedVideo extends React.Component {
     ? `${minutesDiff} minutes ago`
     : `${secDiff} seconds ago`;
 }
-
   render() {
-    const { search, relatedVideos } = this.state;
+    const { search, relatedVideos, videoId } = this.state;
     const { handleSearch, handleToggle } = this.context;
+    const embedUrl = `${BASE_EMBED_URL}${videoId}`
      let createdDate = new Date(relatedVideos[0]?.snippet.publishedAt);
      let diff = this.diffDate(createdDate);
     return (
-      <>
-        <div>
+      <div className = {styles.full}>
+        <div className = {styles.left}>
           <div>
-            <img
-              src={relatedVideos[0]?.snippet.thumbnails.default.url}
-              alt="thumbnail"
-            />
+          <iframe width={'966'} height={'544'} src={embedUrl} frameBorder='0'
+            allow='autoplay; encrypted-media' allowFullScreen title={'video'}/>
           </div>
-
           <div>
             <div>
-              <h5>{relatedVideos[0]?.snippet.title}</h5>
-              <p>
-                <span> 10k views</span>
-                <span>{diff}</span>
-              </p>
-              <p>{relatedVideos[0]?.snippet.channelTitle}</p>
-              <p>{relatedVideos[0]?.snippet.description}</p>
+              <div className = {styles.title}>{relatedVideos[0]?.snippet.title}</div>
+              <div className = {styles.details}>
+                <div style = {{marginRight: "400px", marginTop: "10px"}}> 108k views  • {diff} </div>
+                  <div className = {styles.icons}><ThumbUpIcon/></div> <div style= {{marginTop: "15px", fontWeight: "bold", marginRight: "10px", color: "#606060"}}>5K</div>
+                  <div className = {styles.icons}><ThumbDownIcon/></div> <div style= {{marginTop: "15px", fontWeight: "bold", marginRight: "10px", color: "#606060"}}>1.2K</div>
+                  <div className = {styles.icons}> <ScreenShareIcon/> </div> <div style= {{marginTop: "15px", fontWeight: "bold", marginRight: "10px", color: "#606060"}}>SHARE</div>
+                  <div className = {styles.icons}> <PlaylistAddSharpIcon/> </div>
+                  <div style= {{marginTop: "15px", fontWeight: "bold", marginRight: "10px", color: "#606060"}}>SAVE</div>
+                  <div className = {styles.icons}> <MoreHorizIcon/> </div>
+              </div>
+              <Line/>
+              <div className = {styles.name}>
+                <div>
+                <PersonIcon fontSize = "large"/>
+                </div>
+              <div>{relatedVideos[0]?.snippet.channelTitle}
+              <br/>
+              {relatedVideos[0]?.snippet.description}</div>
+              </div>
             </div>
           </div>
-          <div>
-            <ThumbUpIcon />
-            <ThumbDownIcon />
-            <ScreenShareIcon />
-            <PlaylistAddSharpIcon />
-            <span>Subscribe</span>
-            <NotificationsSharpIcon/>
-          </div>
         </div>
-        <div>
+        <div className = {styles.right}>
           <ul>
             {relatedVideos
               ?.filter((el, index) => index < 40 && index > 0)
@@ -113,10 +124,9 @@ class RelatedVideo extends React.Component {
               })}
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 }
 RelatedVideo.contextType = DataContext;
-
 export { RelatedVideo };

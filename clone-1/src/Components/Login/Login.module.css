@@ -1,0 +1,39 @@
+.name {
+    font-weight: 500;
+    font-size: 15px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    line-height: 0%;
+}
+
+.realname {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 17px;
+    font-weight: 450;
+}
+.email {
+    font-size: 14px;
+    font-weight: 450;
+    margin-top: 20px;
+}
+
+.gmail {
+    color: blue;
+    margin-top: 40px;
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.gmail:hover {
+    text-decoration: underline;
+}
+
+
+.box {
+    margin-top: 20px;
+    border: .25px solid black;
+}
