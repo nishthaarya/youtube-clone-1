@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { DataContext } from '../../Context/DataContextProvider'
 import Categories from '../Categories/Categories'
 import { Navbar } from '../Navbar/Navbar'
@@ -40,7 +41,7 @@ export default class Home extends React.Component {
         ) : (
             <div className = {styles.trending_sidebar}>
                 <Sidebar />
-                <Trending/>
+                <Trending {...this.props} />
             </div>
         )
     }

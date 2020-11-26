@@ -13,6 +13,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Modal } from "@material-ui/core";
 import { Login } from "../Login/Login";
+import { Link, NavLink, Redirect } from "react-router-dom";
 
 const Icon = styled.div`
   font-size: 15px;
@@ -58,6 +59,7 @@ class Navbar extends React.Component {
   componentDidMount(){
     console.log(this.state.search);
   }
+
 
   debouncer(){
     var api_key = "AIzaSyDnOErpl_HkR8b2BYSWlA4u6Ghtyr4ytSs";
@@ -105,16 +107,19 @@ class Navbar extends React.Component {
             <Menu onClick={handleToggle}>
               <MenuIcon />
             </Menu>
-
+            <Link to = "/home">
             <div>
               <img
                 src="https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg"
                 className="homeBtn"
               />
             </div>
+            </Link>
           </div>
           <div className="center">
-            <DebounceInput
+            <DebounceInput 
+            placeholder = "Search"
+            className = "searchbar"
               minLength={2}
               debounceTimeout={300}
               onChange={this.handleChange}

@@ -39,7 +39,7 @@ class RelatedVideo extends React.Component {
       params: {
         part: "snippet",
         key: api_key,
-        maxResults: 20,
+        maxResults: 25,
         type: "video",
         relatedToVideoId: this.context.videoId,
       },
@@ -184,25 +184,14 @@ class RelatedVideo extends React.Component {
                     {relatedVideos[0]?.snippet.description}
                   </div>
                 </div>
-              <div classname = {styles.title1}>
-                <div className = {styles.finaltitle}>
-                  <div> {relatedVideos[0]?.snippet.channelTitle} </div>
-                <button className = {styles.subscribe}>SUBSCRIBE</button>
-                </div>
-              <div className = {styles.description}>
-              {relatedVideos[0]?.snippet.description}
-              </div>
-              </div>
               </div>
             </div>
           </div>
         </div>
         <div className={styles.right}>
           <ul>
-            {relatedVideos
-              ?.filter((el, index) => index < 40 && index > 0)
-              .map((el, index) => {
-                return <RelatedVideoItem {...el} key={index} />;
+            {relatedVideos.map((items) => {
+                return <RelatedVideoItem {...this.props} {...items} key={items.id.videoId} />;
               })}
           </ul>
         </div>

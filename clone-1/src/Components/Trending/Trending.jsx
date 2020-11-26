@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { TrendingItems } from "./TrendingItems";
 import styles from "./Trending.module.css";
+import { DataContext } from "../../Context/DataContextProvider";
 
 class Trending extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Trending extends React.Component {
   }
   render() {
     const { trending_videos, isLoading, error } = this.state;
-    // console.log(trending_videos);
+    console.log(trending_videos);
     return (
       <div className={styles.Trending}>
         <div className={styles.trending_header}>
@@ -87,7 +88,7 @@ class Trending extends React.Component {
               trending_videos && (
                 <div className = {styles.trending_vids}>
                   {trending_videos.map((items) => (
-                    <TrendingItems key={items.id} {...items} />
+                    <TrendingItems key={items.id} {...items} {...this.props} />
                   ))}
                 </div>
               )
@@ -98,4 +99,6 @@ class Trending extends React.Component {
     );
   }
 }
+
+Trending.contextType = DataContext
 export { Trending };

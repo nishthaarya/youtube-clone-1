@@ -6,7 +6,6 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { DataContext } from "../../Context/DataContextProvider";
-import { Redirect } from "react-router-dom";
 class VideoItem extends React.Component {
   constructor(props) {
     super(props);

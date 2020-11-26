@@ -66,9 +66,19 @@
 
 /* CENTER */
 
+.searchbar {
+  width: 67%;
+  height: 28px;
+  border: .5px solid rgb(228, 226, 226);
+  font-size: 15px;
+  border-radius: 1px;
+  padding-left: 10px;
+  outline: none;
+}
+
 .navbarContainer .center {
   margin-top: 0px !important;
-  flex: 60%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
