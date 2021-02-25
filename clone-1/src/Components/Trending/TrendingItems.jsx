@@ -51,6 +51,7 @@ class TrendingItems extends React.Component{
       : views;
   let createdDate = new Date(this.props.snippet.publishedAt);
   let diff = this.diffDate(createdDate);
+  
   return (
     <div
       className={styles.Video_card}

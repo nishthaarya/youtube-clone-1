@@ -46,16 +46,7 @@ class Navbar extends React.Component {
       showModal: !this.state.showModal
     })
   }
-  // debouncerer = (delay, callback) => {
-  //   var debounce;
-  //   return function () {
-  //     var value = this.state.search;
-  //     debounce && clearTimeout(debounce);
-  //     debounce = setTimeout(function () {
-  //       callback(value);
-  //     }, delay);
-  //   };
-  // };
+
   componentDidMount(){
     console.log(this.state.search);
   }
@@ -107,7 +98,7 @@ class Navbar extends React.Component {
             <Menu onClick={handleToggle}>
               <MenuIcon />
             </Menu>
-            <Link to = "/home">
+            <Link to = "/">
             <div>
               <img
                 src="https://i.insider.com/59a59a8d79bbfd1d008b601a?width=1200&format=jpeg"

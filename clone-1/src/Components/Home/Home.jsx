@@ -10,23 +10,17 @@ import { Trending } from '../Trending/Trending'
 import { Videos } from '../Videos/Videos'
 import styles from './Home.module.css'
 
-
-
 export default class Home extends React.Component {
-
     constructor(props) {
         super(props)
     }
-
     render() {
-
-        const {trending} = this.context
-        
-        return !trending ? (
+        const {trending} = this.context     
+        return (
             <div className = {styles.home}>
                 <div className = {styles.bottom}>
-                    <div className = {styles.sidebar}>
-                        <Sidebar/>
+                    <div className="left">
+                        <Sidebar {...this.props}/>
                     </div>
                     <div className = {styles.right}>
                         <div className = {styles.category}>
@@ -37,11 +31,6 @@ export default class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        ) : (
-            <div className = {styles.trending_sidebar}>
-                <Sidebar />
-                <Trending {...this.props} />
             </div>
         )
     }

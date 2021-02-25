@@ -37,7 +37,8 @@ class VideoItem extends React.Component {
   selectVideo(id) {
     const { sendVideoId } = this.context;
     const { history } = this.props;
-    console.log(this.props);
+    console.log(this.props.id);
+    console.log(id);
     history.push(`/videos/${id}`);
     sendVideoId(id);
   }

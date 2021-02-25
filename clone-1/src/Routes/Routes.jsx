@@ -13,7 +13,7 @@ class Routes extends React.Component {
       <div>
         <Route path="/" render={() => <Navbar />} />
         <Switch>
-          <Route path="/home" exact render={(props) => <Home {...props}/>} />
+          <Route path="/" exact render={(props) => <Home {...props} />} />    
           <Route path = "/login" exact render={() => <Login/>} />
           <Route path= "/videos/:id" exact render ={(props)=><RelatedVideo {...props} />} />
           <Route path= "/trending" exact render = {(props) => <Trending {...props} />} />

@@ -98,27 +98,31 @@ const SideItemBox = styled.div`
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.handleTrending1 = this.handleTrending1.bind(this)
+    this.moveToTrending = this.moveToTrending.bind(this)
+    this.moveToHome = this.moveToHome.bind(this)
   }
 
-  handleTrending1() {
-    const {handleTrending} = this.context
-    handleTrending()
+  moveToTrending() {
+    // const {handleTrending} = this.context
+    this.props.history.push('/trending')
+    console.log(this.props.history);
   }
 
+  moveToHome() {
+    this.props.history.push('/');
+    console.log(this.props);
+  }
   render() {
     const { isToggle } = this.context;
 
     return !isToggle ? (
       <SideBox>
-        <SideItem>
+        <SideItem onClick={this.moveToHome}>
           <HomeIcon />
           <ItemName>Home</ItemName>
         </SideItem>
         <SideItem
-        onClick = 
-          {this.handleTrending1}
-        >
+        onClick = {this.moveToTrending}>
           <WhatshotIcon />
           <ItemName 
           >Trending</ItemName>

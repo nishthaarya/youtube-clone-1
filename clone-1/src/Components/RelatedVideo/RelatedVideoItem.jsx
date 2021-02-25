@@ -78,7 +78,7 @@ class RelatedVideoItem extends React.Component {
     let createdDate = new Date(this.props.snippet.publishedAt);
     let diff = this.diffDate(createdDate);
 
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div onClick = {() => this.selectVideo(this.props.id.videoId)} >
         <Card>
